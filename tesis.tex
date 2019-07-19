@@ -1,0 +1,187 @@
+\documentclass[oneside,numbers,spanish,a4paper]{ezthesis/ezthesis}
+%% # Opciones disponibles para el documento #
+%%
+%% Las opciones con un (*) son las opciones predeterminadas.
+%%
+%% Modo de compilar:
+%%   draft            - borrador con marcas de fecha y sin im'agenes
+%%   draftmarks       - borrador con marcas de fecha y con im'agenes
+%%   final (*)        - version final de la tesis
+%%
+%% Tama'no de papel:
+%%   letterpaper (*)  - tama'no carta (Am'erica)
+%%   a4paper          - tama'no A4    (Europa)
+%%
+%% Formato de impresi'on:
+%%   oneside          - hojas impresas por un solo lado
+%%   twoside (*)      - hojas impresas por ambos lados
+%%
+%% Tama'no de letra:
+%%   10pt, 11pt, o 12pt (*)
+%%
+%% Espaciado entre renglones:
+%%   singlespace      - espacio sencillo
+%%   onehalfspace (*) - espacio de 1.5
+%%   doublespace      - a doble espacio
+%%
+%% Formato de las referencias bibliogr'aficas:
+%%   numbers          - numeradas, p.e. [1]
+%%   authoryear (*)   - por autor y a'no, p.e. (Newton, 1997)
+%%
+%% Opciones adicionales:
+%%   spanish         - tesis escrita en espa'nol
+%%
+%% Desactivar opciones especiales:
+%%   nobibtoc   - no incluir la bibiolgraf'ia en el 'Indice general
+%%   nofancyhdr - no incluir "fancyhdr" para producir los encabezados
+%%   nocolors   - no incluir "xcolor" para producir ligas con colores
+%%   nographicx - no incluir "graphicx" para insertar gr'aficos
+%%   nonatbib   - no incluir "natbib" para administrar la bibliograf'ia
+
+%% Paquetes adicionales requeridos se pueden agregar tambi'en aqu'i.
+%% Por ejemplo:
+%\usepackage{subfig}
+%\usepackage{multirow}
+\usepackage[utf8]{inputenc}
+\usepackage{mathptmx} % Times new roman
+\usepackage{enumitem}
+\usepackage[export]{adjustbox}
+\usepackage[figurename=Fig.,tablename=TABLA]{caption}
+\usepackage{float}
+\usepackage{flafter}
+\usepackage{afterpage}
+\usepackage{placeins}
+\usepackage{tabularx}
+\usepackage{chngcntr}
+\usepackage{titlesec}
+\usepackage{lscape}
+\usepackage{listings} % code
+\usepackage{color}
+\usepackage{textcomp} % quotesimple
+\usepackage{multicol}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{codestyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=false,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    inputencoding=utf8,
+    literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+}
+\lstset{style=codestyle}
+
+%% # Datos del documento #
+%% Nota que los acentos se deben escribir: \'a, \'e, \'i, etc.
+%% La letra n con tilde es: \~n.
+
+\author{Kelvin Helmut Provincia Quispe}
+\title{PLANTILLA DE PROYECTO DE FIN DE CARRERA}
+\degree{[Grado o Título a obtener]}
+\supervisor{Nombre de mi Asesor}
+\institution{Universidad La Salle}
+\faculty{ESCUELA PROFESIONAL DE INGENIERÍA DE SOFTWARE}
+\department{AREQUIPA – PERÚ}
+
+%% # M'argenes del documento #
+%% 
+%% Quitar el comentario en la siguiente linea para ajustar los m'argenes del
+%% documento. Leer la documentaci'on de "geometry" para m'as informaci'on.
+
+%\geometry{top=40mm,bottom=33mm,inner=40mm,outer=25mm}
+
+%% El siguiente comando agrega ligas activas en el documento para las
+%% referencias cruzadas y citas bibliogr'aficas. Tiene que ser *la 'ultima*
+%% instrucci'on antes de \begin{document}.
+
+\hyperlinking
+\begin{document}
+
+%% En esta secci'on se describe la estructura del documento de la tesis.
+%% Consulta los reglamentos de tu universidad para determinar el orden
+%% y la cantidad de secciones que debes de incluir.
+
+
+\counterwithout{figure}{chapter} % chngcntr
+\counterwithout{table}{chapter}
+
+\renewcommand\thechapter{\Roman{chapter}}
+\renewcommand{\thesubsection}{\Alph{subsection}}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+\renewcommand\listtablename{Índice de tablas}
+\renewcommand\bibname{Referencias}
+\renewcommand\thefigure{\arabic{figure}}
+\renewcommand\thetable{\Roman{table}}
+
+\titleformat{\chapter}[hang] {\vspace{-6em}\centering\normalfont\LARGE\bfseries}{\chaptertitlename\ \thechapter\ --}{0.2em}{}
+
+\captionsetup[table]{
+  labelsep=newline,
+  justification=centering,
+}
+
+\fancyfoot[R]{\thepage}
+\fancyhead[R]{}
+
+%% # Portada de la tesis #
+%% Mirar el archivo "titlepage.tex" para los detalles.
+\include{titlepage}
+
+%% # Prefacios #
+%% Por cada prefacio (p.e. agradecimientos, resumen, etc.) crear
+%% un nuevo archivo e incluirlo aqu'i.
+%% Para m'as detalles y un ejemplo mirar el archivo "gracias.tex".
+\include{prefacios/dedicatoria}
+\include{prefacios/agradecimiento}
+
+%% # 'Indices y listas de contenido #
+%% Quitar los comentarios en las lineas siguientes para obtener listas de
+%% figuras y cuadros/tablas.
+\tableofcontents
+\include{prefacios/indice_abreviaturas_siglas}
+\listoftables
+\listoffigures
+\include{prefacios/glosario_terminos}
+\include{prefacios/resumen}
+\include{prefacios/abstract}
+\include{prefacios/palabras_clave}
+
+%% # Cap'itulos #
+%% Por cada cap'itulo hay que crear un nuevo archivo e incluirlo aqu'i.
+%% Mirar el archivo "intro.tex" para un ejemplo y recomendaciones para
+%% escribir.
+\include{capitulos/01_problematica_proyecto}
+\include{capitulos/02_planteamiento_proyecto}
+\include{capitulos/03_metodologia}
+%\include{conclu}
+
+\appendix
+%% Cap'itulos incluidos despues del comando \appendix aparecen como ap'endices
+%% de la tesis.
+%\include{apendiceA}
+%\include{apendiceB}
+%\include{apendiceC}
+
+%% Incluir la bibliograf'ia. Mirar el archivo "biblio.bib" para m'as detales
+%% y un ejemplo.
+% Ver ezthesis.cls linea 178
+%\bibliographystyle{IEEEannot}
+\bibliography{bibliografia/biblio}
+
+\end{document}
